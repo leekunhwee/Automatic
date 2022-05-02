@@ -1,6 +1,6 @@
 #!/usr/bin/env python 
 # -*- coding: utf-8 -*-
- 
+
 import os 
 import xlrd
 import openpyxl 
@@ -206,7 +206,7 @@ def mainWork(sheet1,onerow):
 if __name__ == '__main__':
     print('\n')
     print('       -------------------------')
-    print('     * 欢迎使用自动注册软件 V1.0 *')
+    print('     * 欢迎使用自动注册软件 V1.1 *')
     print('       -------------------------')
     print('\n')
     print('            --------------')
