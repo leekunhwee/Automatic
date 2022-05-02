@@ -86,8 +86,8 @@ def find_Excel():
     else:
         lb.config(text = "您没有选择任何文件");
         
-def exit_process():
-    exit()
+# def exit_process():
+    # exit()
 
 #任务
 def mainWork(sheet1,onerow):
@@ -260,7 +260,7 @@ if __name__ == '__main__':
     btn1.place(x = 220, y = 250, anchor = 'center')
 
     # 结束文件选择按钮
-    btn2 = tk.Button(window, text = "取消", bg = '#FF9797', command = exit_process) # 直接跳出
+    btn2 = tk.Button(window, text = "取消", bg = '#FF9797', command = window.destroy) # 直接跳出
     btn2.place(x = 280, y = 250, anchor = 'center')
 
     # 选择文件按钮
