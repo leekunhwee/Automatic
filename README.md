@@ -1,8 +1,7 @@
 # Automatic
 
-<<<<<<< HEAD
-* ## HaploX
-=======
-* [barcode](https://github.com/leekunhwee/Automatic/tree/main/barcode)
->>>>>>> b51b83be0103b404ea8fd115e11f46e501d8321f
+* [ADICON](https://github.com/leekunhwee/Automatic/tree/main/ADICON)
+  * 上饶艾迪康防疫条形码快速生成软件
+
+* [HaploX](https://github.com/leekunhwee/Automatic/tree/main/HaploX)
   * 上饶海普洛斯防疫条形码快速生成软件
