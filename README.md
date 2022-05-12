@@ -6,6 +6,9 @@
 * [HaploX](https://github.com/leekunhwee/Automatic/tree/main/HaploX)
   * 上饶海普洛斯防疫条形码快速生成软件
 
+* [Yiqi](https://github.com/leekunhwee/Automatic/tree/main/Yiqi)
+  * 宜春“翼起防疫”二维码快速生成软件
+
 ### [软件演示、讲解视频](https://www.bilibili.com/video/BV1634y1a7oD)
 *注：*
 
