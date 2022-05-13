@@ -19,6 +19,7 @@ import os
 import tkinter as tk
 import tkinter.filedialog
 
+# 截图尺寸初始化
 top=0
 left=0
 width=518 # 像素
@@ -101,6 +102,7 @@ def fillLiveArea(liveArea):
 	lvl1Name=''
 	lvl1Len=len(lvl1Data)
 	lvl1Idx=1
+	
 	for data in lvl1Data:
 		areaName=data['name']
 		areaCode=data['code']
@@ -247,19 +249,16 @@ def main(onerow):
 
 if __name__ == '__main__':
 	print('\n')
-	print('  -----------------------------------')
+	print('  -------------------------------------')
 	print('* 欢迎使用“翼起防控”自动注册软件 V1.0 *')
-	print('  -----------------------------------')
+	print('  -------------------------------------')
 	print('\n')
-	print('        ----------------------')
-	print('      * 开发者：李健辉，王正仁 *')
-	print('        ----------------------')
-	# print('       ------------------------')
-	# print('     * 部分代码参考 B 站 Up 主：*\n       * 不高兴就喝水、各种焱 *')
-	# print('         --------------------')
-	print('     -----------------------------')
-	print('   * https://github.com/leekunhwee *')
-	print('     -----------------------------')
+	print('          ----------------------')
+	print('        * 开发者：李健辉，王正仁 *')
+	print('          ----------------------')
+	print('  ---------------------------------------')
+	print('* https://github.com/leekunhwee/Automatic *')
+	print('  ---------------------------------------')
 	print('\n')
 	print('                 ----')
 	print('               * 声明 *')
@@ -274,6 +273,7 @@ if __name__ == '__main__':
 	print('\n')
 	os.system("pause")
 
+	# 创建文件选择窗口
 	window = tk.Tk()
 
 	# 窗口命名 
