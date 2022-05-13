@@ -37,7 +37,7 @@ def makeQRCode(userName, userCard, userTel):
 	if not os.path.exists('./qrcodes'): os.mkdir('./qrcodes')
 	img.save('./qrcodes/'+userCard+".png")
 
-# 定义选择 xls 文件的程序
+# 定义选择 Excel 文件的程序
 def findExcel():
 	global source_xlsx_name
 	filename = tk.filedialog.askopenfilename(title='选择 Excel 文件', filetypes=[('Excel 表', '*.xlsx')]) # 限制文件选择类型
@@ -94,6 +94,7 @@ def fillLiveArea(liveArea):
 	curArea="宜春市"
 	lvl0Code='360900000000'
 	lvl0Name=curArea
+
 	#level1
 	time.sleep(0.5)
 	lvl1Res = requests.get(apiUrl+'code=' + lvl0Code + '&pCode=' + lvl0Code).text
@@ -102,7 +103,7 @@ def fillLiveArea(liveArea):
 	lvl1Name=''
 	lvl1Len=len(lvl1Data)
 	lvl1Idx=1
-	
+
 	for data in lvl1Data:
 		areaName=data['name']
 		areaCode=data['code']
@@ -244,7 +245,6 @@ def main(onerow):
 	pyautogui.scroll(-1000)
 	pyautogui.click(x=left+width/2,y=top+height-60,button='left')
 	time.sleep(3)
-	# pyautogui.scroll(1000)
 	makeQRCode(onerow[0],onerow[8],onerow[5])
 
 if __name__ == '__main__':
