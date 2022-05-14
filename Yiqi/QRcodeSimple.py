@@ -35,7 +35,7 @@ def makeQRCode(userName, userCard, userTel):
 	qr.add_data(infoStr)
 	img = qr.make_image(fill_color="black", back_color="white")
 	if not os.path.exists('./qrcodes'): os.mkdir('./qrcodes')
-	img.save('./qrcodes/'+userCard+".png")
+	img.save('./qrcodes/'+ userName+'_'+userCard+".png")
 
 # 定义选择 Excel 文件的程序
 def findExcel():
@@ -223,7 +223,7 @@ def fillCard(card):
 
 def main(onerow):
 	print(onerow)
-	pyautogui.click(x=left+width/2,y=top+height-60,button='left')
+	pyautogui.click(x=left+width/2,y=top+height-150,button='left')
 	time.sleep(0.5)
 	fillName(onerow[0])
 	time.sleep(0.5)
@@ -243,7 +243,7 @@ def main(onerow):
 	time.sleep(0.5)
 	fillCard(onerow[8])
 	pyautogui.scroll(-1000)
-	pyautogui.click(x=left+width/2,y=top+height-60,button='left')
+	pyautogui.click(x=left+width/2,y=top+height-150,button='left')
 	time.sleep(3)
 	makeQRCode(onerow[0],onerow[8],onerow[5])
 
