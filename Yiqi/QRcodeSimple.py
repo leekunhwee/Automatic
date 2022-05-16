@@ -1,5 +1,6 @@
 #!/usr/bin/env python 
 # -*- coding: utf-8 -*-
+
 import os
 import xlrd
 import openpyxl 
@@ -16,6 +17,9 @@ import base64
 import urllib.parse
 import qrcode
 from PIL import Image, ImageDraw, ImageFont  # pip install pillow
+import numpy as np
+import cv2
+
 
 
 # 原系统通过转码方式将姓名、身份证、电话转为二维码，所以这里模拟该过程生成二维码
@@ -27,8 +31,7 @@ def makeQRCode(userName, userCard, userTel):
 	qr.add_data(infoStr)
 	img = qr.make_image(fill_color="black", back_color="white")
 	img_w, img_h = img.size
-	print(img_w, img_h)
-
+	# print(img_w, img_h)
 	text = userName+':\n'+userCard
 	oriImg = Image.open('./source/background.png')
 	oriImg.paste(img, (0, 13))
@@ -52,6 +55,19 @@ def findExcel():
 	else:
 		lb1.config(text = "您没有选择任何表格");
 
+## 读取图像，解决imread不能读取中文路径的问题
+def cv_imread(filePath):
+    # 核心就是下面这句，一般直接用这句就行，直接把图片转为mat数据
+    cv_img=cv2.imdecode(np.fromfile(filePath,dtype=np.uint8),-1)
+    # imdecode读取的是rgb，如果后续需要opencv处理的话，需要转换成bgr，转换后图片颜色会变化
+    # cv_img=cv2.cvtColor(cv_img,cv2.COLOR_RGB2BGR)
+    return cv_img
+
+# def cv_imread(file_path = ""):
+#     file_path_gbk = file_path.encode('gbk')       # unicode转gbk，字符串变为字节数组
+#     img_mat = cv2.imread(file_path_gbk.decode())  # 字节数组直接转字符串，不解码
+#     return img_mat
+
 def findShoot():
 	global source_shoot_name
 	filename = tk.filedialog.askopenfilename(title='选择 Png 截图', filetypes=[('屏幕截图', '*.png')]) # 限制文件选择类型
@@ -59,6 +75,7 @@ def findShoot():
 	if filename != '':
 		lb2.config(text = "您选择的程序截图是："+filename);
 		source_shoot_name = filename
+		# source_shoot_name = cv_imread(filename)
 		btn1.config(state = 'normal') # 激活确定按钮
 	else:
 		lb2.config(text = "您没有选择任何截图");
@@ -339,6 +356,8 @@ if __name__ == '__main__':
 	barSize=55 # 菜单栏高度
 	bottom=75 # 底部菜单栏高度
 	# 获取截图的实际尺寸
+
+	source_shoot_name = cv_imread(source_shoot_name)
 	position=pyautogui.locateOnScreen(source_shoot_name)
 	if(position==None):
 		print('\n\n  -----------------------------------------------------')
