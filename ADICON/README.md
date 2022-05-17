@@ -1,4 +1,4 @@
-# <center>条形码快速生成软件使用说明</center>
+# <center>二维码快速生成软件使用说明</center>
 
 <center> 2022.05.04</center>
 
