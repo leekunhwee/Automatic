@@ -65,11 +65,6 @@ def cv_imread(filePath):
     # cv_img=cv2.cvtColor(cv_img,cv2.COLOR_RGB2BGR)
     return cv_img
 
-# def cv_imread(file_path = ""):
-#     file_path_gbk = file_path.encode('gbk')       # unicode转gbk，字符串变为字节数组
-#     img_mat = cv2.imread(file_path_gbk.decode())  # 字节数组直接转字符串，不解码
-#     return img_mat
-
 def findShoot():
 	global source_shoot_name
 	filename = tk.filedialog.askopenfilename(title='选择 Png 截图', filetypes=[('屏幕截图', '*.png')]) # 限制文件选择类型

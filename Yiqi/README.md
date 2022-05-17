@@ -97,19 +97,25 @@ Picpick 官网: [下载地址](https://picpick.app/zh/download)
 
 **（非开发者无需了解以下内容）**
 
-1.	安装python3.4以上版本，并配置环境变量
+1.	安装python3.4以上版本(推荐3.8)，并配置环境变量。
 [Python 教程](https://www.runoob.com/python3/python3-install.html)
+可通过Anaconda安装Python，conda install python=3.8
+为避免后期报错，注意将以下内容添加到系统环境变量的Path
+<path>\Anaconda3
+<path>\Anaconda3\scripts
+<path>\Anaconda3\Library\bin
 
 2.	安装依赖包
 方法：在cmd中（win+R  输入cmd  回车）输入
-pip install openpyxl 回车
-pip install requests 回车
-pip install qrcode 回车
-pip install pyperclip 回车
-pip install xlrd 回车
-pip install pyautogui==0.9.50 回车
-pip install opencv-python 回车
-pip install pillow 回车
+`pip install openpyxl` 回车
+`pip install pyperclip` 回车
+`pip install xlrd` 回车
+`pip install pyautogui==0.9.50` 回车
+`pip install opencv-python` 回车
+`pip install pillow==6.2.1` 回车
+`pip install requests`
+`pip install qrcode`
+
 
 【国内下载慢，可以在install 后面加 -i https://pypi.tuna.tsinghua.edu.cn/simple 换成国内镜像】
 
