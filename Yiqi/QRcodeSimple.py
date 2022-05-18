@@ -20,7 +20,7 @@ from PIL import Image, ImageDraw, ImageFont  # pip install pillow
 import numpy as np
 import cv2
 
-os.chdir(sys.path[0])# 为了在 VScode 中调试时使用相对路径
+os.chdir(sys.path[0]) # 为了在 VScode 中调试时使用相对路径
 
 # 原系统通过转码方式将姓名、身份证、电话转为二维码，所以这里模拟该过程生成二维码
 def makeQRCode(userName, userCard, userTel):
@@ -32,14 +32,14 @@ def makeQRCode(userName, userCard, userTel):
 	img = qr.make_image(fill_color="black", back_color="white")
 	img_w, img_h = img.size
 	# print(img_w, img_h)
-	text = userName+':\n'+userCard
+	text ='姓名: ' + userName+'\n证件: '+userCard
 	oriImg = Image.open('./source/background.png')
 
 	oriImg.paste(img, (0, 13))
 	draw = ImageDraw.Draw(oriImg)
 	font_path = './source/msyh.ttc'
 
-	font = ImageFont.truetype(font_path, 25)#设置字体
+	font = ImageFont.truetype(font_path, 25) # 设置字体
 	draw.text((img_w/20,img_h),text,fill='black',font=font)
 
 	if not os.path.exists('./qrcodes'): os.mkdir('./qrcodes')
