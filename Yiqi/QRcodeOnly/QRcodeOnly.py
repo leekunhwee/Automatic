@@ -11,8 +11,10 @@ import qrcode
 import os
 import tkinter as tk
 import tkinter.filedialog
+import os, sys
+from PIL import Image, ImageDraw, ImageFont  # pip install pillow
 
-def makeQRCode(userName, userCard, userTel):
+""" def makeQRCode(userName, userCard, userTel):
 	infoStr='{"username":"' + userName + '","usercard":"' + userCard +  '","usertel":"' + userTel +'","useraddr":""}'
 	infoStr=base64.b64encode(infoStr.encode())
 	infoStr=urllib.parse.quote(infoStr)
@@ -20,7 +22,33 @@ def makeQRCode(userName, userCard, userTel):
 	qr.add_data(infoStr)
 	img = qr.make_image(fill_color="black", back_color="white")
 	if not os.path.exists('./qrcodes'): os.mkdir('./qrcodes')
-	img.save('./qrcodes/'+ userName+'_'+userCard+".png")
+	img.save('./qrcodes/'+ userName+'_'+userCard+".png") 
+"""
+
+os.chdir(sys.path[0]) # 为了在 VScode 中调试时使用相对路径
+
+# 原系统通过转码方式将姓名、身份证、电话转为二维码，所以这里模拟该过程生成二维码
+def makeQRCode(userName, userCard, userTel):
+	infoStr='{"username":"' + userName + '","usercard":"' + userCard +  '","usertel":"' + userTel +'","useraddr":""}'
+	infoStr=base64.b64encode(infoStr.encode()) # base64加密
+	infoStr=urllib.parse.quote(infoStr) # url加密
+	qr = qrcode.QRCode(version=4, error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=8, border=2)
+	qr.add_data(infoStr)
+	img = qr.make_image(fill_color="black", back_color="white")
+	img_w, img_h = img.size
+	# print(img_w, img_h)
+	text ='姓名: ' + userName+'\n证件: '+userCard
+	oriImg = Image.open('./source/background.png')
+
+	oriImg.paste(img, (0, 13))
+	draw = ImageDraw.Draw(oriImg)
+	font_path = './source/msyh.ttc'
+
+	font = ImageFont.truetype(font_path, 25) # 设置字体
+	draw.text((img_w/20,img_h),text,fill='black',font=font)
+
+	if not os.path.exists('./qrcodes'): os.mkdir('./qrcodes')
+	oriImg.save('./qrcodes/'+ userName+'_'+userCard+".png")
 
 # 定义选择 Excel 文件的程序
 def findExcel():
@@ -36,7 +64,8 @@ def findExcel():
 
 def main(onerow):
 	print(onerow)
-	makeQRCode(onerow[0],onerow[1],onerow[2])
+	# makeQRCode(onerow[0],onerow[1],onerow[2])
+	makeQRCode(onerow[0],onerow[8],onerow[5])
 
 if __name__ == '__main__':
 	print('\n')
